@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<div class="topnav">
+  <a class="active" href="#home">Home</a>
+  <a href="#contact">Contact</a>
+  <a style="float:right;" href="/logout">Logout</a>
+
+</div>
+  <title>Loan Approval Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <style>
+  body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #1f242e;
+  }
+  h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+  }
+  h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+  .jumbotron {
+    background-image: url("pattern");
+    background-color:#191954;
+    color: white;
+    padding: 50px 25px;
+    text-transform: uppercase;
+    font-family: Montserrat, sans-serif;
+      font-size: 50px;
+
+  }
+  .container-fluid {
+    padding: 25px 40px;
+  }
+  .bg-grey {
+
+     background-image: url("pattern.png");
+         background-color:#191954;
+
+    color: ghostwhite;
+    font-size: 20px;
+  }
+  .topnav {
+  background-color: #191954;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #9bb5ff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #102f86;
+  color: white;
+}
+  label{
+  	font-size: 20px;
+  	color: #102f86;
+  }
+  input{
+  width:180px;
+  	border: none;
+  	border-bottom: 2px solid #102f86;
+  }
+  select{
+    width:180px;
+  	border: none;
+  	border-bottom: 2px solid #102f86;
+  }
+  button{
+  	background-color: #102f86;
+  	color: white;
+  	border-radius: 5px;
+  	border-color: white;
+  }
+
+  
+  </style>
+</head>
+<body>
+
+<div class="jumbotron" >
+  <center><h1>LOAN APPROVAL</h1></center>
+</div>
+<div style="color=#102f86">
+<h2 align="center" style="color: #102f86;">Enter the below details</h2><br>
+<div class="container" align="center">  
+	<form action='/predict' method="post" style="form">
+		<div class="row" >
+			<div class="col-sm-4">
+      <label for="Gender">Gender</label>
+          <br>
+        <select id="Gender" name="Gender">
+            <option ></option>
+  <option value="1">Male</option>
+  <option value="0">Female</option>
+        </select>
+    </div>
+    <div class="col-sm-4" >
+      <label for="Married">Married</label>
+      <br>
+<select id="Married" name="Married">
+    <option ></option>
+  <option value="0">No</option>
+  <option value="1">Yes</option>
+</select>
+    </div>
+    <div class="col-sm-4" >
+     <label for="Dependents">Dependents</label>
+      <br>
+<select id="Dependents" name="Dependents">
+    <option ></option>
+  <option value="1">Yes</option>
+  <option value="0">No</option>
+
+</select>
+    </div>
+  </div>
+      <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <label><b>Education</b></label>
+          <br>
+        <select id="Education" name="Education">
+            <option ></option>
+  <option value="1">Graduate</option>
+  <option value="0">Not Graduate</option>
+            </select>
+    </div>
+    <div class="col-sm-4" >
+      <label ><b>Self Employed</b></label>
+            <br>
+          <select id="SelfEmployed" name="SelfEmployed">
+              <option ></option>
+  <option value="1">Yes</option>
+  <option value="0">No</option>
+            </select>
+    </div>
+    <div class="col-sm-4" >
+      <label><b>Applicant Income</b></label>
+            <br>
+          <input id="ApplicantIncome" name="ApplicantIncome" placeholder="      In $" type="text">
+    </div>
+  </div>
+<br>
+  <div class="row">
+    <div class="col-sm-4">
+      <label><b>Coapplicant Income</b></label>
+          <br>
+        <input placeholder="      In $" name="CoapplicantIncome" id="CoapplicantIncome" type="text">
+    </div>
+    <div class="col-sm-4" >
+      <label ><b>Loan Amount</b></label>
+            <br>
+         <input id="LoanAmount" name="LoanAmount" placeholder="      In $"  type="text" >
+    </div>
+    <div class="col-sm-4" >
+      <label for="LoanAmountTerm">Loan Amount Term</label>
+        <br>
+        <input id="LoanAmountTerm" name="LoanAmountTerm" placeholder="      In days"  type="text" >
+      <br>
+
+
+    </div>
+<br>
+  </div>
+        <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <label><b>Credit History</b></label>
+          <br>
+        <select id="CreditHistory" name="CreditHistory">
+            <option ></option>
+  <option value="0">No</option>
+  <option value="1">Yes</option>
+            </select>
+    </div>
+      <div class="col-sm-4" >
+
+  </div>
+    <div class="col-sm-4" >
+      <label><b>Property Area</b></label>
+          <br>
+        <select id="PropertyArea" name="PropertyArea">
+            <option ></option>
+  <option value="3">Urban</option>
+  <option value="2">Semiurban</option>
+  <option value="1">Rural</option>
+            </select>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="row center">
+          <button type="submit">Predict Probability</button>
+   </div>
+</form>
+<br><br>
+<div class="row" align="center">
+	<label style=" font-size: 50px; color: red;">{{pred}}</label>
+</div>
+</div>
+</div>
+
+<div id="contact" class="container-fluid bg-grey">
+  <b><p class="text-center">CONTACT</p></b>
+      <p>Email</p>
+      <p>admin@gmail.com</p>
+    </div>
+</body>
+</html>

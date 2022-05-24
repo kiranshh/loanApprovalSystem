@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <div class="topnav">
+        <a href="/admin">Home</a>
+        <a style="float:right" href="/logout">Logout</a>
+</div>
+ <style>
+      .topnav {
+  background-color: #e9e3dc;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #1f242e;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+body{
+    background: #1f242e;
+    color: white;
+            background-image: url("https://img.freepik.com/free-photo/black-brick-building-wall-interior-modern-loft-background_73152-4952.jpg?size=626&ext=jpg");
+
+
+}
+#container {
+    position: fixed;
+    width: 100%
+    height: 100%;
+    top: 50%;
+    margin-top: -100px;
+    background: black;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+    table {
+                border-spacing: 0;
+                border-top: solid 1px #1f242e;
+                width: 100%;
+                border-radius: 4px;
+                padding-right: 100px;
+            }
+            th, td {
+                border: 1px solid #1f242e;
+                border-width: 0 1px 1px 1px;
+                padding: 5px;
+                background-color:#e9e3dc ;
+                color: #1f242e;
+            }
+            th {
+                padding: 10px 6px;
+                text-transform: uppercase;
+                text-align: left;
+            }
+            tbody > tr:nth-child(2n - 1) {
+                background-color: #f4f4f4;
+            }
+</style>
+</head>
+<body>
+<h1><center>Welcome Admin</center></h1>
+<h3>&nbsp;&nbsp;&nbsp;Filter By Class Label</h3>
+<form action="/filter" method="post">
+    &nbsp;&nbsp;&nbsp;<select id="s" name="s">
+        <option></option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+
+    </select>
+    <br>
+    <br>
+    &nbsp;&nbsp;&nbsp;<input type="submit" value="Submit">
+</form>
+<br>
+<br>
+<br>
+<table style="margin-left: 20px;">
+    <thead>
+        <tr style="color: #00b386;font:20px ">
+        <td>Email</td>
+        <td>Gender</td>
+         <td>Married</td>
+         <td>Dependents</td>
+         <td>Education</td>
+         <td>SelfEmployed</td>
+         <td>ApplicantIncome</td>
+         <td>CoapplicantIncome</td>
+         <td>LoanAmount</td>
+          <td>LoanAmountTerm</td>
+         <td>CreditHistory</td>
+         <td>PropertyArea</td>
+         <td>Label</td>
+</tr>
+    </thead>
+<tbody>
+{%for i in users%}
+
+<tr>
+    <td>{{i['Email']}}</td>
+        <td>{{i['Gender']}}</td>
+         <td>{{i['Married']}}</td>
+         <td>{{i['Dependents']}}</td>
+         <td>{{i['Education']}}</td>
+         <td>{{i['SelfEmployed']}}</td>
+         <td>{{i['ApplicantIncome']}}</td>
+         <td>{{i['CoapplicantIncome']}}</td>
+         <td>{{i['LoanAmount']}}</td>
+          <td>{{i['LoanAmountTerm']}}</td>
+         <td>{{i['CreditHistory']}}</td>
+         <td>{{i['PropertyArea']}}</td>
+         <td>{{i['Label']}}</td>
+</tr>
+{%endfor%}
+    </tbody>
+</table>
+</body>
+</html>
